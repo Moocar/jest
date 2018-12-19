@@ -16,6 +16,7 @@ import {
   PARENT_MESSAGE_CLIENT_ERROR,
   PARENT_MESSAGE_SETUP_ERROR,
   PARENT_MESSAGE_OK,
+  PARENT_MESSAGE_IPC,
   WorkerInterface,
 } from '../types';
 
@@ -79,6 +80,10 @@ export default class ChildProcessWorker implements WorkerInterface {
       ),
     );
 
+    if (this._options.hasOwnProperty(`ipcCallback`)) {
+      this._ipcCallback = this._options.ipcCallback
+    }
+
     child.on('message', this.onMessage.bind(this));
     child.on('exit', this.onExit.bind(this));
 
@@ -115,6 +120,10 @@ export default class ChildProcessWorker implements WorkerInterface {
     switch (response[0]) {
       case PARENT_MESSAGE_OK:
         this._onProcessEnd(null, response[1]);
+        break;
+
+      case PARENT_MESSAGE_IPC:
+        this._ipcCallback(this._child, response.slice(1));
         break;
 
       case PARENT_MESSAGE_CLIENT_ERROR:

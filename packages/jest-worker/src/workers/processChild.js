@@ -13,6 +13,7 @@ import {
   CHILD_MESSAGE_CALL,
   CHILD_MESSAGE_END,
   CHILD_MESSAGE_INITIALIZE,
+  CHILD_MESSAGE_IPC,
   PARENT_MESSAGE_CLIENT_ERROR,
   PARENT_MESSAGE_SETUP_ERROR,
   PARENT_MESSAGE_OK,
@@ -56,6 +57,10 @@ process.on('message', (request: any) => {
 
     case CHILD_MESSAGE_END:
       end();
+      break;
+
+    case CHILD_MESSAGE_IPC:
+      process.emit(`ipc`, request.slice(1));
       break;
 
     default:

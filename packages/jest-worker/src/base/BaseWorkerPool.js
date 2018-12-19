@@ -37,7 +37,7 @@ export default class BaseWorkerPool {
     const stdout = mergeStream();
     const stderr = mergeStream();
 
-    const {forkOptions, maxRetries, setupArgs} = options;
+    const {forkOptions, maxRetries, setupArgs, ipcCallback} = options;
 
     for (let i = 0; i < options.numWorkers; i++) {
       const workerOptions: WorkerOptions = {
@@ -46,6 +46,7 @@ export default class BaseWorkerPool {
         setupArgs,
         workerId: i,
         workerPath,
+        ipcCallback,
       };
 
       const worker = this.createWorker(workerOptions);
