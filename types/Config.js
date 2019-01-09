@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -111,6 +111,7 @@ export type InitialOptions = {
   detectOpenHandles?: boolean,
   displayName?: string,
   expand?: boolean,
+  extraGlobals?: Array<string>,
   filter?: Path,
   findRelatedTests?: boolean,
   forceCoverageMatch?: Array<Glob>,
@@ -204,6 +205,7 @@ export type GlobalConfig = {|
   detectOpenHandles: boolean,
   enabledTestsMap: ?{[key: string]: {[key: string]: boolean}},
   expand: boolean,
+  extraGlobals: Array<string>,
   filter: ?Path,
   findRelatedTests: boolean,
   forceExit: boolean,
@@ -257,8 +259,11 @@ export type ProjectConfig = {|
   detectOpenHandles: boolean,
   displayName: ?string,
   errorOnDeprecated: boolean,
+  extraGlobals: Array<string>,
   filter: ?Path,
   forceCoverageMatch: Array<Glob>,
+  globalSetup: ?string,
+  globalTeardown: ?string,
   globals: ConfigGlobals,
   haste: HasteConfig,
   moduleDirectories: Array<string>,

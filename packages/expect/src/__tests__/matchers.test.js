@@ -1,15 +1,16 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
 
-const {stringify} = require('jest-matcher-utils');
-const jestExpect = require('../');
-const Immutable = require('immutable');
-const chalk = require('chalk');
+import {stringify} from 'jest-matcher-utils';
+import jestExpect from '../';
+import Immutable from 'immutable';
+import chalk from 'chalk';
+
 const chalkEnabled = chalk.enabled;
 
 beforeAll(() => {
@@ -1018,6 +1019,12 @@ describe('.toHaveLength', () => {
     expect(() => jestExpect(0).toHaveLength(1)).toThrowErrorMatchingSnapshot();
     expect(() =>
       jestExpect(undefined).toHaveLength(1),
+    ).toThrowErrorMatchingSnapshot();
+  });
+
+  test('matcher error expected length', () => {
+    expect(() =>
+      jestExpect('abc').toHaveLength('3'),
     ).toThrowErrorMatchingSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,7 +8,7 @@
 
 'use strict';
 
-const path = require('path');
+import path from 'path';
 
 jest.mock('fb-watchman', () => {
   const normalizePathSep = require('../../lib/normalizePathSep').default;
@@ -61,7 +61,7 @@ const createMap = obj => new Map(Object.keys(obj).map(key => [key, obj[key]]));
 
 describe('watchman watch', () => {
   beforeEach(() => {
-    watchmanCrawl = require('../watchman');
+    watchmanCrawl = require('../watchman').default;
 
     watchman = require('fb-watchman');
 

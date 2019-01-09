@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -16,6 +16,7 @@ import {
   ensureExpectedIsNumber,
   ensureNoExpected,
   EXPECTED_COLOR,
+  matcherErrorMessage,
   matcherHint,
   pluralize,
   printExpected,
@@ -470,11 +471,11 @@ const ensureMock = (mockOrSpy, matcherName) => {
       mockOrSpy._isMockFunction !== true)
   ) {
     throw new Error(
-      matcherHint('[.not]' + matcherName, 'jest.fn()', '') +
-        '\n\n' +
-        `${RECEIVED_COLOR('jest.fn()')} value must be a mock function ` +
-        `or spy.\n` +
+      matcherErrorMessage(
+        matcherHint('[.not]' + matcherName, 'jest.fn()', ''),
+        `${RECEIVED_COLOR('received')} value must be a mock or spy function`,
         printWithType('Received', mockOrSpy, printReceived),
+      ),
     );
   }
 };

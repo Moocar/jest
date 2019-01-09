@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -125,7 +125,7 @@ function findNative(
   });
 }
 
-module.exports = function nodeCrawl(
+export default function nodeCrawl(
   options: CrawlerOptions,
 ): Promise<InternalHasteMap> {
   if (options.mapper) {
@@ -166,4 +166,4 @@ module.exports = function nodeCrawl(
       findNative(roots, extensions, ignore, callback);
     }
   });
-};
+}

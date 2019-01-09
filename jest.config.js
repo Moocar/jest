@@ -1,4 +1,4 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 
 'use strict';
 
@@ -32,6 +32,8 @@ module.exports = {
     '/node_modules/',
     '/examples/',
     '/e2e/.*/__tests__',
+    '/e2e/global-setup',
+    '/e2e/global-teardown',
     '\\.snap$',
     '/packages/.*/build',
     '/packages/.*/build-es5',

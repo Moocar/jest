@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -239,7 +239,7 @@ describe('Farm', () => {
     // Note that the worker is sending a start response synchronously.
     const p1 = farm.doWork('foo', 'bar');
 
-    // The first call is sent the the worker, the second is queued
+    // The first call is sent the worker, the second is queued
     expect(callback).toHaveBeenCalledTimes(1);
 
     // Flush the queue

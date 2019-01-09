@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,14 +19,12 @@ import H from './constants';
 import HasteFS from './HasteFS';
 import HasteModuleMap from './ModuleMap';
 import invariant from 'invariant';
-// eslint-disable-next-line import/default
 import nodeCrawl from './crawlers/node';
 import normalizePathSep from './lib/normalizePathSep';
 import os from 'os';
 import path from 'path';
 import sane from 'sane';
 import serializer from 'jest-serializer';
-// eslint-disable-next-line import/default
 import watchmanCrawl from './crawlers/watchman';
 import WatchmanWatcher from './lib/WatchmanWatcher';
 import * as fastPath from './lib/fast_path';
@@ -1064,4 +1062,5 @@ function copyMap<K, V>(input: Map<K, V>): Map<K, V> {
 HasteMap.H = H;
 HasteMap.ModuleMap = HasteModuleMap;
 
-module.exports = HasteMap;
+export {default as H} from './constants';
+export default HasteMap;
