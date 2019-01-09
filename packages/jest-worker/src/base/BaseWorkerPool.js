@@ -42,11 +42,11 @@ export default class BaseWorkerPool {
     for (let i = 0; i < options.numWorkers; i++) {
       const workerOptions: WorkerOptions = {
         forkOptions,
+        ipcCallback,
         maxRetries,
         setupArgs,
         workerId: i,
         workerPath,
-        ipcCallback,
       };
 
       const worker = this.createWorker(workerOptions);

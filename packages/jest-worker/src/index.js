@@ -77,10 +77,10 @@ export default class JestWorker {
     this._options = Object.assign({}, options);
     const workerPoolOptions: WorkerPoolOptions = {
       forkOptions: this._options.forkOptions || {},
+      ipcCallback: this._options.ipcCallback || undefined,
       maxRetries: this._options.maxRetries || 3,
       numWorkers: this._options.numWorkers || Math.max(os.cpus().length - 1, 1),
       setupArgs: this._options.setupArgs || [],
-      ipcCallback: this._options.ipcCallback || undefined,
     };
 
     this._workerPool = this._options.WorkerPool

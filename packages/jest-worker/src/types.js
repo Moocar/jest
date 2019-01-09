@@ -70,6 +70,7 @@ export type FarmOptions = {
   setupArgs?: Array<mixed>,
   maxRetries?: number,
   numWorkers?: number,
+  ipcCallback: Function,
   WorkerPool?: (
     workerPath: string,
     options?: WorkerPoolOptions,
@@ -81,6 +82,7 @@ export type WorkerPoolOptions = {|
   forkOptions: ForkOptions,
   maxRetries: number,
   numWorkers: number,
+  ipcCallback: Function,
 |};
 
 export type WorkerOptions = {|
@@ -89,6 +91,7 @@ export type WorkerOptions = {|
   maxRetries: number,
   workerId: number,
   workerPath: string,
+  ipcCallback: Function,
 |};
 
 // Messages passed from the parent to the children.

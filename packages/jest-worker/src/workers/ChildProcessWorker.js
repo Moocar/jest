@@ -47,6 +47,7 @@ import supportsColor from 'supports-color';
  */
 export default class ChildProcessWorker implements WorkerInterface {
   _child: ChildProcess;
+  _ipcCallback: Function;
   _options: WorkerOptions;
   _onProcessEnd: OnEnd;
   _retries: number;
@@ -81,7 +82,7 @@ export default class ChildProcessWorker implements WorkerInterface {
     );
 
     if (this._options.hasOwnProperty(`ipcCallback`)) {
-      this._ipcCallback = this._options.ipcCallback
+      this._ipcCallback = this._options.ipcCallback;
     }
 
     child.on('message', this.onMessage.bind(this));
